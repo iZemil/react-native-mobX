@@ -1,18 +1,26 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TextInput, Button, Alert } from 'react-native';
+import { StyleSheet, Text, View, Button, Alert } from 'react-native';
 import THCell from './THCell';
 import TCell from './TCell';
+import { observer } from 'mobx-react';
 
+@observer
 export default class TColumn extends Component {
   render() {
+    const { tableStore } = this.props;
+
     return (
       <View style={styles.addColumn}>
         <Button
-          onPress={() => { Alert.alert('Добавить колонку с Датчиком')}}
+          onPress={this.handlePress.bind(this)}
           title="+"
         />
       </View>
     );
+  }
+
+  handlePress() {
+    this.props.tableStore.addColumn();
   }
 }
 

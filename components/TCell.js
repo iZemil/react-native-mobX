@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TextInput, Button, Alert } from 'react-native';
-// import Table from './';
+import {observer} from 'mobx-react';
 
+@observer
 export default class TCell extends Component {
   render() {
     return (
