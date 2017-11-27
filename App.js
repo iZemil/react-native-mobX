@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TextInput, Button, Alert } from 'react-native';
+import { StyleSheet, View, ScrollView } from 'react-native';
 import Table from './components/Table';
 import TableStore from './stores/TableStore';
+import { observer } from 'mobx-react';
 
 var tableStore = new TableStore;
 
+@observer
 export default class App extends Component {
   render() {
 
     return (
       <View style={styles.container}>
-        <Table tableStore={tableStore} />
+        <ScrollView keyboardShouldPersistTaps='always'>
+          <Table tableStore={tableStore} />
+        </ScrollView>
       </View>
     );
   }

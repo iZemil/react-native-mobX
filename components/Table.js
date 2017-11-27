@@ -9,15 +9,20 @@ export default class Table extends Component {
   
   render() {
     const { tableStore } = this.props;
-    
+
     return (
-      <ScrollView style={styles.table} horizontal={true}>
+      <ScrollView
+        style={styles.table}
+        horizontal={true}
+        keyboardShouldPersistTaps='always'
+        >
         { tableStore.tableData.map(
-          item => 
+          (column, i) => 
           <TColumn tableStore={tableStore}
-            key={item.id}
-            thVal={item.name}
-            index={item.id}
+            key={column.id}
+            thVal={column.name}
+            index={column.id}
+            colN={i}
           />)
         }
         <AddColumn tableStore={tableStore} />
@@ -25,7 +30,7 @@ export default class Table extends Component {
     );
   }
 }
-
+ 
 const styles = StyleSheet.create({
   table: {
     marginTop: 20,

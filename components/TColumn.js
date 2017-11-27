@@ -9,10 +9,22 @@ export default class TColumn extends Component {
   render() {
     return (
       <View style={styles.column}>
-        <THCell val={this.props.thVal} index={this.props.index} tableStore={this.props.tableStore} />
-        {this.props.tableStore.tableData[0].data.map(
-          (tc, i) => <TCell val={tc} key={Math.random()} index={i} />
-        )}
+        <THCell
+          val={this.props.thVal}
+          colN={this.props.colN}
+          tableStore={this.props.tableStore}
+        />
+        { this.props.tableStore.tableData[this.props.colN].data.map(
+          (cell, i) => 
+          <TCell
+            val={cell.val}
+            key={Math.random()} 
+            iX={this.props.colN}
+            iY={i} 
+            index={this.props.index}
+            tableStore={this.props.tableStore}
+          />
+        ) }
       </View>
     );
   }
